@@ -4,8 +4,7 @@
 
 
 
-![X-ray Example]((https://github.com/mohamedali020/AI-based-Dental-X-ray-Analysis-using-Custom-UNet-Segmentation-with-VGG19-Backbone/blob/main/Architicture%20model.png))
-
+![X-ray Example](https://github.com/mohamedali020/AI-based-Dental-X-ray-Analysis-using-Custom-UNet-Segmentation-with-VGG19-Backbone/blob/main/Architicture%20model.png?raw=true)
 
 
 ## 📑 Table of Contents
