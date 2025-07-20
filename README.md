@@ -142,14 +142,18 @@ Finally, the model produces a mask that defines the problem regions.
 
 ## 📈 Results
 
-After 8 epochs:
+## Training and Validation Metrics (Epoch 10)
 
 | Metric            | Training | Validation |
-|------------------|----------|------------|
-| Accuracy         | 0.9859   | 0.9878     |
-| Dice Coefficient | 0.71     | 0.7123     |
+|-------------------|----------|------------|
+| F1-Score          | 0.7478   | 0.7160     |
+| Dice Coefficient  | 0.7142   | 0.6849     |
+| Jaccard Index     | 0.6014   | 0.5622     |
+| Loss              | 0.3434   | 0.4103     |
+| Precision         | 0.7748   | 0.7312     |
+| Recall            | 0.7310   | 0.7107     |
 
-![Training Curves](https://github.com/mohamedali020/Dental-Panoramic-X-Ray-Segmentation-Using-U-Net-with-VGG-16-Backbone/raw/main/Screenshot_15.png)
+![Training Curves](https://github.com/mohamedali020/AI-based-Dental-X-ray-Analysis-using-Custom-UNet-Segmentation-with-VGG19-Backbone/blob/main/Evaluation%20graph.png)
 
 ---
 
