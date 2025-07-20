@@ -4,8 +4,6 @@
 
 
 
-![X-ray Example](https://github.com/mohamedali020/AI-based-Dental-X-ray-Analysis-using-Custom-UNet-Segmentation-with-VGG19-Backbone/blob/main/Architicture%20model.png?raw=true)
-
 
 ## 📑 Table of Contents
 - [Abstract](#abstract)  
@@ -41,17 +39,35 @@ desired object from the image background. The **two main types of image segmenta
 
 ## 📋 Project Overview
 
-- I built an **AI-powered system** that helps dentists analyze panoramic X-rays.
-- They upload an X-ray → the model segments problem areas (e.g. caries, impacted or missing teeth).
-- A **U-Net-based binary segmentation** identifies dental regions (target vs. background).
-- I trained a **U-Net with VGG-16 encoder**, optimized to classify each pixel correctly.
+**Project Title:** AI-based Dental X-ray Analysis using Custom UNet Segmentation with VGG19 Backbone
+
+**Description:** As part of my graduation project, I developed the computer vision component of an AI Vision System integrated into a dental application. The goal was to assist dentists in diagnosing dental conditions by automatically segmenting problem regions from panoramic X-ray images sent by patients.
+
+I built a custom semantic segmentation model based on the U-Net architecture, enhanced with a VGG19 backbone for feature extraction. The model was trained on a publicly available annotated dataset (14 dental condition classes) using preprocessing, augmentation, and advanced training techniques to improve accuracy and reduce overfitting.
+
+**Key Contributions:**
+
+Applied semantic segmentation for dental diagnostics
+
+Customized U-Net with VGG19 as encoder (transfer learning)
+
+Used Roboflow dataset with pixel-level annotations
+
+Integrated preprocessing pipeline: generate masks through annotation files, data imbalance, resizing, normalization, thresholding, and augmentation, and data generation
+
+**Model Evaluation:** To evaluate the performance of my segmentation model, I used several metrics, including:
+
+Dice Coefficient, Jaccard Index (IoU), F1-Score, Precision, and Recall However, I focused mainly on the Dice Coefficient and IoU (Intersection over Union) as they are the most reliable and commonly used metrics in semantic segmentation tasks due to their effectiveness in measuring overlap between predicted masks and ground truth.
+
+Final output: precise mask highlighting dental problem regions
+
 
 ---
  
 ## 📊 Dataset Details
 
-- **Source:** Kaggle ([link](https://www.kaggle.com/datasets/mohamedali020/dental-x-raypanoramic-semanticsegmentation-task)), originally from Roboflow.
-- **Full code on Kaggle:** ([link](https://www.kaggle.com/code/mohamedali020/dental-x-ray-binary-segmentation-u-net-vgg16))
+- **Source:** Kaggle ([link](https://www.kaggle.com/datasets/mohamedali020/dental-x-raypanoramic-semanticsegmentation-task/data)), originally from Roboflow ([link](https://universe.roboflow.com/arshs-workspace-radio/vzrad2))
+- **Full code on Kaggle:** ([link](https://www.kaggle.com/code/mohamedali020/ai-based-dental-x-ray-analysis-using-custom-unet-s)))
 ---
 
 Dental-Xray-Segmentation/
@@ -95,16 +111,31 @@ Dental-Xray-Segmentation/
    - Rotation ≤ 5° (70%)  
    - Random brightness/contrast (limit 0.1, 30%)  
    - Shift/Scale/Rotate (10°, 50%)  
-4. **Segmentation Model** → Build U-Net with VGG‑16 backbone.  
-5. **Hyper‑tuning & Metrics** → Use Dice loss; track accuracy & Dice coefficient.
+4. **Segmentation Model** → Build Custom segmentation U-Net with VGG‑19 backbone.  
+5. **Hyper‑tuning & Metrics** → Use Dice loss; track Dice Coefficient, Jaccard Index (IoU), F1-Score, Precision, and Recall.
 
 ---
 
 ## 🧱 Model Architecture
 
-- **U‑Net**: Encoder–decoder with skip connections, ideal for medical imaging.  
-- **Encoder:** VGG‑16 (ImageNet pretrained) for robust feature extraction.  
-- **Decoder:** Upsampling layers with skip‑connections to restore spatial details.  
+**Architecture to ai vision system to this project**
+
+**Here in my AI vision system architecture:**
+
+**Part One:**
+
+In preprocessing:
+The dataset included annotations, which I used to generate the masks. I also focused on resizing both the image and masks to 256x256, which is a very suitable input size because, in the panoramic x-ray, the target zone is centered, so we don't need the rest of the image. This is because when I initially set the input size to 512*512, this made the model focus more on the pixels in the background. I applied data augmentation using techniques tailored to the nature of the dental x-ray input. I used a data generator, which gave me full control over the data during training, using a batch-by-batch approach. I also applied normalization and set a threshold for the masks, which is what the model needed for the segmentation output.
+
+**Part Two:**
+Regarding the Custom Segmentation U-Net with VGG19 as the backbone, I replaced the encoder with VGG19, a type of transfer learning model pre-trained on the ImageNet dataset, to leverage the power of feature extraction, reduce training time, and achieve higher accuracy.
+I also developed the decoder with improvements, such as Batch Normalization and Dropout, to enhance model stability and prevent overfitting.
+
+**Part Three:**
+Finally, the model produces a mask that defines the problem regions.
+
+![X-ray Example](https://github.com/mohamedali020/AI-based-Dental-X-ray-Analysis-using-Custom-UNet-Segmentation-with-VGG19-Backbone/blob/main/Architicture%20model.png?raw=true)
+
 
 
 ---
@@ -124,7 +155,9 @@ After 8 epochs:
 
 ## 🎯 Final Output
 
-A binary mask highlighting target tooth regions.
+These are samples for the final output. Each image shows the original x-ray image and the truth mask it was used to generate it.
+Here is a merge between the raw x-ray and the true mask to show exactly where the problem regions are that the model is supposed to recognize.
+After that, the prediction output.
 
 ![WhatsApp Image Example](https://github.com/mohamedali020/Dental-Panoramic-X-Ray-Segmentation-Using-U-Net-with-VGG-16-Backbone/raw/main/WhatsApp%20Image%202025-06-17%20at%2017.56.19_65fbd25a.jpg)
 
@@ -132,17 +165,25 @@ A binary mask highlighting target tooth regions.
 
 ## 🔭 Future Work & Developments
 
-- **Speed Optimizations:** Reduce computational cost via model trimming or quantization.  
-- **Smart Imaging:** Automatically enhance low-quality X-rays (denoising, resolution upscaling).  
-- **Multi-class Segmentation:** Use Mask R‑CNN or multiclass U-Net for identifying tooth types.  
-- **Motion/Shadow Correction:** Handle real-world X-ray artifacts.  
-- **Clinical Integration:** Incorporate dentist feedback into model refinement.
+
+**1- Addressing Imbalanced Data**
+
+To tackle data imbalance, I plan to acquire a well-annotated, balanced multi-class segmentation dataset with sufficient samples per class to enhance model performance. I will also apply advanced data augmentation techniques tailored for multi-class segmentation to boost minority class representation. Additionally, I aim to explore weighted loss functions or oversampling strategies to improve training on imbalanced data for my dental X-ray application.
+
+**2- High-Quality Dental X-ray Images**
+
+To improve segmentation accuracy, I will source a dataset with high-resolution dental X-ray images and precise annotations, ensuring clear details and minimal noise. I plan to use advanced imaging techniques, like high-definition X-ray systems, and implement quality control to validate image and annotation integrity before training. These steps will enhance the model's performance for dental X-ray segmentation.
+
+**3- During practical evaluation**
+
+I noticed that the model was able to identify the problem areas in general, but it was unable to separate each problem. Plus, I needed to achieve higher accuracy. Therefore, the next step is to experiment with instance segmentation, and the experiment will be with YOLOv11-seg, which combines object detection and instance segmentation.
 
 ---
 
 ##  Conclusion
 
-This project demonstrates the potential of deep learning—specifically U-Net with a VGG16 backbone—in the field of dental image analysis. Automating the segmentation of dental X-rays provides a foundation for developing intelligent tools to support dentists in diagnosis, treatment planning, and patient communication. With further improvements and integration into real-world systems, such models can contribute to faster, more accurate, and more accessible dental care.
+This project demonstrates the potential of deep learning—specifically U-Net with a VGG19 backbone—in the field of dental image analysis. Automating the segmentation of dental X-rays provides a foundation for developing intelligent tools to support dentists in diagnosis, treatment planning, and patient communication. With further improvements and integration into real-world systems, such models can contribute to faster, more accurate, and more accessible dental care.
+
 
 
 
