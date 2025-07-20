@@ -1,0 +1,6 @@
+tensorflow==2.18.0
+keras
+numpy==1.26.4
+pandas
+matplotlib
+albumentations==1.1.0
