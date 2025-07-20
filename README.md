@@ -4,7 +4,7 @@
 
 
 
-![X-ray Example](https://github.com/mohamedali020/Dental-Panoramic-X-Ray-Segmentation-Using-U-Net-with-VGG-16-Backbone/raw/main/1-s2.0-S0010482522010046-ga1.jpg)
+![X-ray Example]([https://github.com/mohamedali020/Dental-Panoramic-X-Ray-Segmentation-Using-U-Net-with-VGG-16-Backbone/raw/main/1-s2.0-S0010482522010046-ga1.jpg](https://github.com/mohamedali020/AI-based-Dental-X-ray-Analysis-using-Custom-UNet-Segmentation-with-VGG19-Backbone/blob/main/Architicture%20model.png))
 
 
 
