@@ -159,7 +159,12 @@ These are samples for the final output. Each image shows the original x-ray imag
 Here is a merge between the raw x-ray and the true mask to show exactly where the problem regions are that the model is supposed to recognize.
 After that, the prediction output.
 
-![WhatsApp Image Example](https://github.com/mohamedali020/Dental-Panoramic-X-Ray-Segmentation-Using-U-Net-with-VGG-16-Backbone/raw/main/WhatsApp%20Image%202025-06-17%20at%2017.56.19_65fbd25a.jpg)
+![Final output1](https://github.com/mohamedali020/AI-based-Dental-X-ray-Analysis-using-Custom-UNet-Segmentation-with-VGG19-Backbone/blob/main/Final%20output1.png)
+
+![Final output2](https://github.com/mohamedali020/AI-based-Dental-X-ray-Analysis-using-Custom-UNet-Segmentation-with-VGG19-Backbone/blob/main/Final%20output2.png)
+
+![Final output3](https://github.com/mohamedali020/AI-based-Dental-X-ray-Analysis-using-Custom-UNet-Segmentation-with-VGG19-Backbone/blob/main/Final%20output3.png)
+
 
 ---
 
